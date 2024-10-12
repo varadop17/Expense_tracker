@@ -123,7 +123,7 @@ const FinancialChartsComponent = ({ transactions }) => {
               {spendingData.length > 0 ? (
                 <Pie {...spendingChartConfig} />
               ) : (
-                <p>No spending data available</p>
+                <p>No spending data available </p>
               )}
             </Card>
           </Col>
