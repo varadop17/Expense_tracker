@@ -9,6 +9,9 @@ import { auth, db } from "../firebase";
 import { toast } from "react-toastify";
 import moment from "moment";
 import TransactionsTable from "../components/TransactionsTable";
+import NoTransactions from "../components/NoTransaction";
+import ChartComponent from "../components/Chart";
+import FinancialChartsComponent from "../components/Chart";
 
 function Dashboard() {
   const [user] = useAuthState(auth);
@@ -130,6 +133,11 @@ function Dashboard() {
             showIncomeModal={showIncomeModal}
             transactions={transactions}
           />
+          {transactions.length > 0 ? (
+            <FinancialChartsComponent transactions={transactions} />
+          ) : (
+            <NoTransactions />
+          )}
           <AddExpenseModal
             isExpenseModalVisible={isExpenseModalVisible}
             handleExpenseCancel={handleExpenseCancel}
@@ -143,10 +151,8 @@ function Dashboard() {
           <TransactionsTable transactions={transactions} />
         </>
       )}
-      
     </>
   );
 }
 
 export default Dashboard;
-
